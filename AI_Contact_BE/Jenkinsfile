@@ -1,0 +1,86 @@
+pipeline {
+  agent any
+  options { skipDefaultCheckout(true) }
+
+  parameters {
+    booleanParam(name: 'FORCE_FE_PUSH', defaultValue: false, description: 'FE subtree 강제 푸시')
+    booleanParam(name: 'FORCE_BE_DEPLOY', defaultValue: false, description: 'BE 배포 강제 실행')
+  }
+
+  environment {
+    FE_DIR    = 'AI_Contact_FE'
+    BE_DIR    = 'AI_Contact_BE'
+    GH_REMOTE = 'github'
+    GH_URL    = 'git@github.com:Spinichi/commontest.git' // FE만 저장하는 GitHub 저장소
+    GH_BRANCH = 'master'                                  // 필요 시 main 으로 변경
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+
+    stage('Push FE subtree -> GitHub') {
+      when {
+        beforeAgent true
+        anyOf {
+          changeset pattern: "${FE_DIR}/**", caseSensitive: true   // FE 디렉터리 변경 시
+          expression { return params.FORCE_FE_PUSH }               // 강제 실행 스위치
+        }
+      }
+      steps {
+        sshagent(['github-ssh']) {
+          sh '''
+            set -e
+            git remote set-url ${GH_REMOTE} ${GH_URL} || git remote add ${GH_REMOTE} ${GH_URL}
+            git subtree split --prefix=${FE_DIR} -b fe-split
+            git -C . update-ref -d refs/heads/ci-temp || true
+            git checkout -B ci-temp fe-split
+            git commit --amend --no-edit --author="Jenkins CI <spinichi@naver.com>"
+            git push --force-with-lease ${GH_REMOTE} ci-temp:${GH_BRANCH}
+            git branch -D fe-split || true
+            git branch -D ci-temp || true
+          '''
+        }
+      }
+    }
+
+    stage('Prepare Backend') {
+      steps {
+        checkout scm   // ← 워크스페이스를 원본 repo 상태로 완전 복구
+      }
+    }
+
+    stage('Deploy Backend') {
+      when {
+        beforeAgent true
+        anyOf {
+          changeset pattern: "${BE_DIR}/**", caseSensitive: true   // BE 디렉터리 변경 시
+          expression { return params.FORCE_BE_DEPLOY }             // 강제 실행 스위치
+        }
+      }
+      steps {
+        dir("${BE_DIR}") {
+          withCredentials([
+            file(credentialsId: 'my-env-file',   variable: 'ENV_PATH'),
+            file(credentialsId: 'my-properties', variable: 'PROP_PATH')
+          ]) {
+            sh '''
+              cp "$ENV_PATH" .env
+              chmod 644 .env
+            '''
+            sh '''
+              mkdir -p src/main/resources
+              cp "$PROP_PATH" src/main/resources/application.properties
+              chmod 644 src/main/resources/application.properties
+            '''
+            sh 'docker-compose down || true'
+            sh 'docker-compose up -d --build --force-recreate'
+          }
+        }
+      }
+    }
+  }
+}

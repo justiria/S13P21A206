@@ -1,0 +1,24 @@
+.user-info-header {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    text-align: left;
+}
+
+.user-info-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-medium);
+}
+
+.user-info-header h3 {
+    font-size: 20px;
+    margin: 8px 0;
+}
+ 
+.user-info-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+ 
+

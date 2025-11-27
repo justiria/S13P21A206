@@ -1,0 +1,36 @@
+.cartoon-detail {
+  height: 80vh;
+  aspect-ratio: 1370 / 798;
+  background-size: contain;
+  display: flex;
+  flex-direction: row;
+}
+
+.cartoon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cartoon-date {
+  font-size: 20px;
+}
+
+.cartoon-content .cartoon-img {
+  width: 90%;
+}
+
+.cartoon-hashtag {
+  text-align: center;
+  line-height: 0.5;
+}
+
+.cartoon-download {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,209 @@
+.auth-form-panel {
+  position: fixed;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form-panel.hidden {
+  /* display: none; */
+}
+
+.auth-form-panel.left {
+  left: 0;
+}
+
+.auth-form-panel.right {
+  left: 50vw;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 80%;
+  max-width: 400px;
+  position: relative; /* Added for absolute positioning of children */
+  align-items: center;
+}
+
+.form-box input {
+  width: 352px;
+  height: 2vh;
+  padding: 16px 24px;
+  font-size: 16px;
+  border: var(--primary) 1px solid;
+  color: var(--primary);
+}
+
+.form-box input::placeholder {
+  color: var(--primary);
+}
+
+.form-box input[type="date"]::placeholder {
+  font-weight: 600 !important;
+}
+
+.form-box input[type="date"]::-webkit-datetime-edit-text,
+.form-box input[type="date"]::-webkit-datetime-edit-month-field,
+.form-box input[type="date"]::-webkit-datetime-edit-day-field,
+.form-box input[type="date"]::-webkit-datetime-edit-year-field {
+  font-weight: 600 !important;
+}
+
+.form-box input:focus {
+  box-shadow: 0px 0px 10px 1px rgb(from var(--primary) r g b / 0.65);
+  outline: none;
+}
+
+.form-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: 0.1s ease-in-out;
+}
+
+.form-box button:hover {
+  background-color: var(--secondary);
+  box-shadow: 0px 0px 10px 1px rgb(from var(--secondary) r g b / 0.65);
+}
+
+.toggle-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-dark);
+  cursor: pointer;
+  text-align: center;
+}
+
+.toggle-text > span {
+  color: var(--primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.form-title {
+  width: 500px;
+  height: 195px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-title > h3 {
+  margin: 10px;
+}
+
+.form-box > h3 {
+  margin: 10px;
+  height: 60px;
+}
+
+.editsvg > img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 200px;
+  left: 220px;
+}
+
+.arrow-left {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  cursor: pointer;
+}
+
+.arrow-left:hover {
+  filter: brightness(0.5);
+}
+
+.birth {
+  display: flex;
+  gap: 20px;
+}
+
+.birth input {
+  flex: 1;
+  width: 50px;
+}
+
+label {
+  color: var(--primary);
+}
+
+.profile {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-image: linear-gradient(90deg, var(--secondary), var(--primary));
+  margin: 20px auto;
+}
+
+.image-edit {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  top: 90px;
+  left: 90px;
+  cursor: pointer;
+}
+
+.profile-image {
+  display: none;
+}
+
+.image-upload-area {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  bottom: 0px; /* Adjust as needed */
+  right: 0px; /* Adjust as needed */
+  background: linear-gradient(
+    to right,
+    #a66ee0 0%,
+    #735ae1 100%
+  ); /* Added fill */
+}
+
+.image-preview-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(to right, #a66ee0 0%, #735ae1 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5em;
+  /* You can add an icon or text here if desired */
+}

@@ -1,0 +1,217 @@
+.calendar-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 10px 4px rgba(0, 0, 0, 0.2),
+    0px 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+
+.calendar-container-top-mid {
+  z-index: 1;
+  border: 1px solid var(--text-light);
+  box-shadow: 0px 4px 10px 0 rgba(115, 90, 225, 0.3),
+    0px 4px 4px 0 rgba(115, 90, 225, 0.1);
+}
+
+.calendar-container-top {
+  height: 30px;
+  background-color: var(--side-bar);
+  box-shadow: 0px 4px 4px 0 rgba(115, 90, 225, 0.1) inset;
+}
+
+.calendar-container-mid {
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px -4px 4px 0 rgba(115, 90, 225, 0.1) inset;
+}
+
+.calendar-container-bottom {
+  border: 1px solid var(--text-light);
+  border-top: none;
+  height: 30px;
+  background-color: var(--side-bar);
+}
+
+.fc {
+  height: 550px;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 20px;
+}
+
+.fc-dayGridMonth-view .fc-view .fc-daygrid {
+  color: var(--text-medium);
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: var(--side-bar);
+}
+
+.fc .fc-daygrid-block-event {
+  background-color: var(--primary);
+}
+
+.fc .fc-daygrid-block-event .fc-event-title {
+  color: white;
+}
+
+.fc-theme-standard .fc-col-header-cell {
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+.fc-toolbar-chunk > div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.fc .fc-button-primary {
+  background-color: transparent;
+  border: none;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.fc .fc-button-primary:hover,
+.fc .fc-button-primary:active,
+.fc .fc-button-primary:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: #ffffff;
+  color: var(--primary);
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: #ffffff;
+  border: none;
+  color: var(--primary);
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus,
+.fc .fc-button-primary:not(:disabled):active:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.fc .fc-today-button {
+  border: 2px solid var(--text-dark);
+  color: var(--text-dark);
+  border-radius: 14px;
+  padding: 3px 10px;
+}
+
+.fc .fc-today-button:not(:disabled).fc-button-active,
+.fc .fc-today-button:not(:disabled):active {
+  background-color: #ffffff;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.fc .fc-today-button:not(:disabled).fc-button-active:focus,
+.fc .fc-today-button:not(:disabled):active:focus {
+  background-color: #ffffff;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  box-shadow: none;
+}
+
+.fc .fc-today-button:hover {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.fc .fc-today-button:focus {
+  outline: none;
+}
+
+.fc .fc-today-button:active {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  color: var(--primary);
+  outline: none;
+}
+
+.fc .fc-today-button:disabled {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  color: var(--primary);
+  opacity: 1;
+}
+
+.fc .fc-toolbar-title {
+  color: var(--text-dark);
+  font-size: 20px;
+}
+
+.fc-day-sat .fc-daygrid-day-number {
+  color: var(--primary);
+}
+
+.fc-day-sun .fc-daygrid-day-number {
+  color: red;
+}
+
+.fc-day-mon .fc-daygrid-day-number,
+.fc-day-tue .fc-daygrid-day-number,
+.fc-day-wed .fc-daygrid-day-number,
+.fc-day-thu .fc-daygrid-day-number,
+.fc-day-fri .fc-daygrid-day-number {
+  color: var(--text-dark);
+}
+
+.fc .fc-col-header-cell-cushion {
+  color: var(--text-light);
+}
+
+.fc .fc-daygrid-day-top {
+  flex-direction: row;
+  font-size: 14px;
+}
+
+.fc .fc-daygrid-day-frame {
+  cursor: pointer;
+}
+
+.fc .fc-daygrid-day-frame:hover {
+  box-shadow: 0 0 2px 2px rgba(115, 90, 225, 1) inset;
+}
+
+.fc .fc-daygrid-event-dot {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  border-radius: 50%;
+  border: 0px;
+  background-color: var(--primary);
+  margin: 0 8px 0 3px;
+}
+
+.fc .fc-event-title {
+  font-size: 12px;
+  color: var(--text-dark);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fc .fc-daygrid-more-link {
+  color: var(--text-light);
+}
+
+.fc-col-header > thead > tr > th:first-child > div > a {
+  color: #f00;
+}
+
+.fc-col-header > thead > tr > th:last-child > div > a {
+  color: #00f;
+}

@@ -1,0 +1,155 @@
+.letters-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 가로 4개 고정 */
+  width: 100%;
+  overflow-y: auto; /* 세로 스크롤만 */
+  overflow-x: hidden; /* 가로 스크롤 막기 */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  justify-items: center;
+}
+
+.letter-box {
+  position: relative;
+  width: 200px;
+  height: 218px;
+  margin: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.letter-box:hover {
+  transform: translateY(-4px) scale(1.1);
+}
+
+.letter-badge {
+  position: absolute;
+  top: 70px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  border-radius: 50%;
+  background: #ff3b30;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  box-shadow: 0 0 0 2px #fff;
+  z-index: 1;
+}
+
+.letter-bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.letter-top {
+  position: absolute;
+  width: 100%;
+  top: 83px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.letter-box:hover .letter-top {
+  top: 0px;
+  transform: scale(1, -1);
+}
+
+.letter-box h4 {
+  margin: 0;
+  padding: 3px 8px;
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.letter-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.letter-modal {
+  background: #ffffff;
+  padding: 80px 50px 0 50px;
+  width: 400px;
+  height: 500px;
+  position: relative;
+  border: 1px solid var(--primary);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.letter-modal-body {
+  white-space: pre-wrap;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: var(--primary);
+  text-decoration-line: underline;
+  text-underline-offset: 8px;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.letter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.letter-icon-img {
+  position: absolute;
+  top: 45px;
+  left: 40px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.status {
+  font-size: 24px;
+  margin: 0;
+  line-height: 1.2;
+  background: linear-gradient(90deg, var(--side-bar), var(--bg-primary));
+  padding: 20px;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25),
+    4px 4px 4px 0 rgba(0, 0, 0, 0.1) inset;
+  border-radius: 20px;
+}

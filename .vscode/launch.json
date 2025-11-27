@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-AicontactBeApplication<aicontact-be-AI_Contact_BE>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.aicontact.backend.AicontactBeApplication",
+      "projectName": "aicontact-be-AI_Contact_BE",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-AicontactBeApplication<AI_Contact_BE>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.aicontact.backend.AicontactBeApplication",
+      "projectName": "AI_Contact_BE",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

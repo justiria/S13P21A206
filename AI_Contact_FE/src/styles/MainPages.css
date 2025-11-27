@@ -1,0 +1,84 @@
+.main-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-row {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding-bottom: 50px;
+}
+
+.page-header {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 30px;
+}
+
+.page-header-light {
+  left: 90px;
+  height: 60px;
+  background: linear-gradient(90deg, var(--side-bar), var(--bg-primary));
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25),
+    4px 4px 4px 0 rgba(0, 0, 0, 0.1) inset;
+  border-radius: 0 20px 20px 0;
+}
+
+.page-header h4 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.page-header h3 {
+  font-size: 24px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.page-header h3 span {
+  color: var(--primary);
+}
+
+.back-ai {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  width: 50px;
+  height: 100px;
+  cursor: pointer;
+  background: var(--primary);
+  border-radius: 20px 0 0 20px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25),
+    4px 4px 4px 0 rgba(0, 0, 0, 0.1) inset;
+  transition: 0.1s ease-in-out;
+}
+
+.back-ai:hover {
+  background: var(--secondary);
+  font-size: 30px;
+}

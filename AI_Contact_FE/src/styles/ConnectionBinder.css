@@ -1,0 +1,22 @@
+.binder{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap : 100px;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+}
+
+.binder > p{
+    font-family: sans-serif;
+    font-size : 24px;
+    text-align: center;
+    color : var(--text-dark);
+}
+
+.binder > img{
+    width : 150px;
+    object-fit: contain;
+    margin : 0px auto;
+}

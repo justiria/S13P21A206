@@ -1,0 +1,244 @@
+#openvidu-logo {
+  height: 35px;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+#openvidu-logo:hover {
+  -webkit-filter: grayscale(0.5);
+  filter: grayscale(0.5);
+}
+
+#back-btn {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  cursor: pointer;
+}
+
+#room-info {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--text-light);
+}
+
+#join {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+#join h2 {
+  color: var(--text-dark);
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#join form {
+  text-align: left;
+}
+
+#join label {
+  display: block;
+  margin-bottom: 10px;
+  color: #0088aa;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  color: #0088aa;
+  font-weight: bold;
+}
+
+.form-control:focus {
+  color: #0088aa;
+  border-color: #0088aa;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(0, 136, 170, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(0, 136, 170, 0.6);
+}
+
+#join button {
+  padding: 0;
+  width: 137px;
+  height: 52px;
+  background-color: transparent;
+}
+
+#join button:hover {
+  border-color: transparent;
+  border-radius: 14px;
+  background-color: var(--secondary);
+  box-shadow: 0px 0px 10px 1px rgb(from var(--secondary) r g b / 0.65);
+}
+
+.btn {
+  font-weight: bold;
+}
+
+.btn-success {
+  background-color: #06d362;
+  border-color: #06d362;
+}
+
+.btn-success:hover {
+  background-color: #1abd61;
+  border-color: #1abd61;
+}
+
+#room {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#layout-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+}
+
+/* ////////////////////////////////// */
+
+/* 로컬 비디오 화면 가득(오버레이) */
+.local-video.full-bleed {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  z-index: 1;
+}
+
+/* VideoComponent의 <video>가 컨테이너를 꽉 채우도록 */
+.local-video.full-bleed .video-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background: #000;
+}
+
+.local-video.full-bleed .video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 화면 꽉 채우기 */
+}
+
+/* 원격 썸네일 스트립 (아래쪽 오버레이) */
+.remote-strip {
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  max-width: 90vw;
+  overflow-x: auto;
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.remote-thumb {
+  width: 25vw;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.remote-thumb .video-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.remote-thumb .video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 버튼 메뉴도 오버레이 위에 */
+#room-btn-menu {
+  position: fixed;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 20px;
+  display: flex;
+  gap: 40px;
+  z-index: 3;
+  padding: 8px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+#room-btn-menu img {
+  width: 50px;
+  cursor: pointer;
+}
+
+#room-btn-menu img:hover {
+  filter: brightness(80%);
+}
+
+.remote-thumb.clickable {
+  cursor: pointer;
+  outline: none;
+}
+
+.remote-strip:has(.remote-thumb.clickable:hover) {
+  background: var(--primary);
+}
+
+.volume-popup {
+  position: absolute;
+  bottom: 70px; /* 버튼 위에 뜨게 함 */
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 30px;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.volume-popup input[type="range"] {
+  flex: 1;
+  accent-color: #a566ff; /* 보라색 계열 */
+  height: 6px;
+  border-radius: 6px;
+}
+
+.volume-label {
+  color: white;
+  font-size: 14px;
+  min-width: 24px;
+  text-align: right;
+}

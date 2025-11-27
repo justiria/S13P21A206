@@ -1,0 +1,441 @@
+.gallery-container-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.photobook-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  overflow: visible;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-info-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery-header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  background: transparent;
+  padding: 0;
+}
+
+.photobook {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* 배경 이미지 */
+.photobook-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 스프링 영역 */
+:root {
+  --spring-width: 60px; /* 스프링 영역 너비 증가 */
+  --photo-padding: 60px;
+}
+
+.spring-placeholder {
+  position: absolute;
+  top: 0;
+  left: calc(50% - var(--spring-width) / 2);
+  width: var(--spring-width);
+  height: 100%;
+  z-index: 2;
+  background: transparent;
+}
+
+.gallery-flip-page {
+  padding: 20px 20px;
+}
+
+/* 사진 그리드 */
+.photo-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 6px; /* gap 줄임 */
+}
+
+.photo-grid.left {
+  background: rgba(255, 255, 255, 0.05); /* 배경 조정 */
+}
+
+.photo-grid.right {
+  background: rgba(255, 255, 255, 0.05); /* 배경 조정 */
+}
+
+.photo-box {
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+  min-height: 50px;
+  padding: 5px 5px 20px 5px;
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.photo-box img:hover {
+  transform: scale(1.02);
+}
+
+.gallery-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 업로드 버튼 */
+.upload-label {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.upload-label input {
+  display: none;
+}
+
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 30px;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.arrow-btn.left {
+  left: 10px;
+}
+
+.arrow-btn.right {
+  right: 10px;
+}
+
+.gallery-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+}
+
+.gallery-tabs {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.gallery-tabs button {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-light);
+  padding: 8px 12px;
+  display: inline-flex; /* 중앙 정렬을 위해 추가 */
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+}
+
+.gallery-tabs button.active {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.gallery-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* 10px → 15px로 증가 */
+}
+
+.sort-btn,
+.calendar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: var(--text-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sort-btn.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.fav-btn {
+  transition: box-shadow 0.2s ease;
+}
+
+.fav-btn:hover,
+.sort-btn:hover {
+  box-shadow: 0 0 1px 2px var(--primary) inset;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.dropdown-item {
+  padding: 10px 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #ffffff;
+}
+
+.dropdown-item.selected {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.calendar-btn {
+  position: relative; /* dropdown의 기준점으로 사용 */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 22px; /* 20px → 22px로 증가 */
+  padding: 6px 8px; /* 4px 6px → 6px 8px로 증가 */
+  border-radius: 6px;
+  z-index: 30; /* z-index 추가 */
+}
+
+/* 빈 사진 박스 스타일 */
+.photo-box:empty {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* 페이지 네비게이션 버튼 */
+.page-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.page-nav-btn.prev {
+  left: -25px;
+}
+
+.page-nav-btn.next {
+  right: -25px;
+}
+
+.page-nav-btn:disabled {
+  background: rgba(0, 0, 0, 0.3);
+  cursor: not-allowed;
+  transform: translateY(-50%);
+}
+
+.page-nav-btn:disabled:hover {
+  transform: translateY(-50%);
+}
+
+/* 달력 드롭다운 스타일 업데이트 */
+.calendar-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #ffffff; /* 흰색 진하게 */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 8px 0;
+  min-width: 120px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* 그림자 더 진하게 */
+  z-index: 1000;
+}
+
+/* 타입 필터 버튼 - opacity 제거 */
+.type-filter-btn {
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.type-filter-btn:hover {
+  transform: scale(1.1);
+}
+
+.type-filter-btn.active {
+  transform: scale(1.1);
+}
+
+/* 타입 드롭다운 - z-index 높이기 */
+.type-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 8px 0;
+  min-width: 140px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  z-index: 2000; /* 버튼보다 높게 설정 */
+  margin-top: 0;
+}
+
+.type-dropdown .dropdown-item {
+  padding: 10px 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  cursor: pointer;
+  border-bottom: none;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 가운데 정렬 */
+}
+
+.type-dropdown .dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+.type-dropdown .dropdown-item.selected {
+  color: var(--primary);
+  font-weight: 600;
+  background: transparent;
+}
+
+.type-filter-btn.active {
+  transform: scale(1.1);
+  opacity: 0.7;
+}
+
+/* 업로드 로딩 오버레이 */
+.upload-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.upload-modal {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+}
+
+.upload-spinner {
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.upload-progress {
+  margin: 20px 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
